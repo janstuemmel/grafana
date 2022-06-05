@@ -2,9 +2,11 @@
 
 [Grafana](https://grafana.com/) service with [loki](https://grafana.com/oss/loki/) and [promtail](https://grafana.com/docs/loki/latest/clients/promtail/) log aggregation.
 
+After `docker-compose up -d` use `admin:admin` as initial login credentials.
+
 ## Loki docker driver
 
-To upload logs from docker containers to loki, install [docker loki plugin](https://grafana.com/docs/loki/latest/clients/docker-driver/). 
+To upload logs from docker containers to loki, install [docker loki driver](https://grafana.com/docs/loki/latest/clients/docker-driver/). 
 
 ```yaml
 services:
