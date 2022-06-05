@@ -1,0 +1,25 @@
+# https://grafana.com/docs/loki/latest/installation/docker/
+version: "3"
+
+services:
+  grafana:
+    image: grafana/grafana:latest
+    volumes:
+      - ./config/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml
+    ports:
+      - "3080:3000"
+
+  loki:
+    image: grafana/loki:2.5.0
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./config/loki.yaml:/etc/loki/config.yaml
+    command: -config.file=/etc/loki/config.yaml
+
+  promtail:
+    image: grafana/promtail:2.5.0
+    volumes:
+      - /var/log:/var/log
+      - ./config/promtail.yaml:/etc/promtail/config.yaml
+    command: -config.file=/etc/promtail/config.yml
